@@ -163,12 +163,9 @@ int minimax(struct Game G)
 
 int board_value(struct Game G)
 {
-	int board_val;
-	if (G.tied) board_val = 0;
-	if (G.winner == COMP) board_val = 1;
-	if (G.winner == USER) board_val = -1;
-	// printf("Board value: %d\n", board_val);
-	return board_val;
+	if (G.tied) return 0;
+	if (G.winner == COMP) return 1;
+	if (G.winner == USER) return -1;
 }
 
 struct Move *possible_moves(struct Game G, int *count)
