@@ -9,10 +9,17 @@
 #define EMPTY ' '
 #define MAX 1000
 #define MIN -1000
+
+#ifdef _WIN32
+#define COLOR_RED     ""
+#define COLOR_GREEN   ""
+#define COLOR_RESET   ""
+#else
 #define COLOR_RED 	 "\033[31m"
 #define COLOR_GREEN  "\033[32m"
 #define COLOR_YELLOW "\033[33m"
 #define COLOR_RESET  "\033[0m"
+#endif
 
 struct Game {
 	char board[3][3];
