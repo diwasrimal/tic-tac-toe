@@ -43,10 +43,13 @@ void print_board(struct Game G)
         printf("\t\t%d │ ", r + 1);
 
         for (int c = 0; c < 3; c++) {
-            G.board[r][c] == USER ? printf(COLOR_GREEN) : printf(COLOR_RED);
+            if (G.board[r][c] == USER) COLOR_GREEN;
+            if (G.board[r][c] == COMP) COLOR_RED;
+
             printf("%c", G.board[r][c]);
-            printf(COLOR_RESET);
+            COLOR_RESET;
             printf(" │ ");
+
         } printf("\n");
 
         if (r <= 1) 
@@ -228,10 +231,19 @@ bool game_complete(struct Game *G)
 
 void print_result(struct Game G)
 {
-	if (G.tied)				printf("\n%sTIE!", COLOR_YELLOW);  		// yellow
-	if (G.winner == USER)	printf("\n%sYou win!", COLOR_GREEN);		// green
-	if (G.winner == COMP)	printf("\n%sComputer wins!", COLOR_RED);	// red
-	puts(COLOR_RESET);
+	if (G.winner == COMP) {
+		COLOR_RED;
+		printf("\nComputer wins!\n");
+	}
+	else if (G.winner == USER) {
+		COLOR_GREEN;
+		printf("\nYou win!\n");
+	}
+	else if (G.tied) {
+		COLOR_YELLOW;
+		printf("\nTIE!\n");
+	}
+	COLOR_RESET;
 }
 
 bool rematch(void)
