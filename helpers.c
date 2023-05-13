@@ -19,13 +19,7 @@ struct Game game_init(char first_player)
 
 struct Game board_update(struct Game G, struct Move m)
 {
-	struct Game new;
-
-	// Copy the board and make the move
-	for (int r = 0; r < 3; r++)
-		for (int c = 0; c < 3; c++)
-			new.board[r][c] = G.board[r][c];
-
+	struct Game new = G;
 	new.board[m.row][m.col] = G.turn;
 	new.turn = (G.turn == USER) ? COMP : USER;
 	return new;
