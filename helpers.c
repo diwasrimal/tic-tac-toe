@@ -1,5 +1,10 @@
-#include "helpers.h"
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
+#include "helpers.h"
 
 struct Game game_init(char first_player)
 {
@@ -160,6 +165,8 @@ int board_value(struct Game G)
 	if (G.tied) return 0;
 	if (G.winner == COMP) return 1;
 	if (G.winner == USER) return -1;
+    printf("Invalid board value");
+    exit(1);
 }
 
 struct Move *possible_moves(struct Game G, int *count)
